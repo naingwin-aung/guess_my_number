@@ -30,14 +30,14 @@ checkBtn.addEventListener('click', function() {
         
             if(guessNumber == randomNumber) {
                 document.querySelector('.message').textContent = 'Equal'
-                if(highscore > labelScore) {
-                    document.querySelector('.highscore').textContent = highscore;
-                } else {
+                if(labelScore > highscore) {
                     highscore = labelScore;
                     document.querySelector('.highscore').textContent = highscore;
                 }
+                document.querySelector('.highscore').textContent = highscore;
                 document.querySelector('body').style.backgroundColor = "green";
                 document.querySelector('.number').textContent = guessNumber;
+                document.querySelector('.number').style.width = '30rem';
                 checkBtn.disabled = true;
             }
         } else {
@@ -54,6 +54,7 @@ againBtn.addEventListener('click', function() {
    document.querySelector('.score').textContent = labelScore;
    document.querySelector('.number').textContent = '?';
    document.querySelector('body').style.backgroundColor = "black";
+   document.querySelector('.number').style.width = '15rem';
    guess.value = '';
    document.querySelector('.message').textContent = 'Start guessing...'
    checkBtn.disabled = false;
