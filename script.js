@@ -1,6 +1,6 @@
 'use strict';
 let guess = document.querySelector('.guess');
-let checkBtn = document.querySelector('.btn.check');
+let btnCheck = document.querySelector('.btn.check');
 let againBtn = document.querySelector('.btn.again');
 
 let randomNumber = Math.trunc(Math.random() * 20) + 1;
@@ -9,7 +9,7 @@ let highscore = 0;
 
 console.log(randomNumber);
 
-checkBtn.addEventListener('click', function() {
+btnCheck.addEventListener('click', function() {
     let guessNumber = Number (guess.value);
 
     if(guessNumber === 0) {
@@ -38,7 +38,7 @@ checkBtn.addEventListener('click', function() {
                 document.querySelector('body').style.backgroundColor = "green";
                 document.querySelector('.number').textContent = guessNumber;
                 document.querySelector('.number').style.width = '30rem';
-                checkBtn.disabled = true;
+                btnCheck.disabled = true;
             }
         } else {
             document.querySelector('.message').textContent = 'Lose The Game';
@@ -57,5 +57,5 @@ againBtn.addEventListener('click', function() {
    document.querySelector('.number').style.width = '15rem';
    guess.value = '';
    document.querySelector('.message').textContent = 'Start guessing...'
-   checkBtn.disabled = false;
+   btnCheck.disabled = false;
 })
