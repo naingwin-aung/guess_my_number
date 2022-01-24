@@ -4,7 +4,7 @@ let checkBtn = document.querySelector('.btn.check');
 let againBtn = document.querySelector('.btn.again');
 
 let randomNumber = Math.trunc(Math.random() * 20) + 1;
-let labelScore = 20;
+let score = 20;
 let highscore = 0;
 
 console.log(randomNumber);
@@ -15,23 +15,23 @@ checkBtn.addEventListener('click', function() {
     if(guessNumber === 0) {
         document.querySelector('.message').textContent = 'No Number Please Enter Again';
     } else {
-        if(labelScore > 0) {
+        if(score > 0) {
             if(guessNumber > randomNumber) {
                 document.querySelector('.message').textContent = "Too high"
-                labelScore--;
-                document.querySelector('.score').textContent = labelScore;
+                score--;
+                document.querySelector('.score').textContent = score;
             }
         
             if(guessNumber < randomNumber) {
                 document.querySelector('.message').textContent = 'Too low'
-                labelScore--;
-                document.querySelector('.score').textContent = labelScore;
+                score--;
+                document.querySelector('.score').textContent = score;
             }
         
             if(guessNumber == randomNumber) {
                 document.querySelector('.message').textContent = 'Equal'
-                if(labelScore > highscore) {
-                    highscore = labelScore;
+                if(score > highscore) {
+                    highscore = score;
                     document.querySelector('.highscore').textContent = highscore;
                 }
                 document.querySelector('.highscore').textContent = highscore;
@@ -50,8 +50,8 @@ checkBtn.addEventListener('click', function() {
 againBtn.addEventListener('click', function() {
    randomNumber = Math.trunc(Math.random() * 20) + 1;
    console.log(randomNumber);
-   labelScore = 20;
-   document.querySelector('.score').textContent = labelScore;
+   score = 20;
+   document.querySelector('.score').textContent = score;
    document.querySelector('.number').textContent = '?';
    document.querySelector('body').style.backgroundColor = "black";
    document.querySelector('.number').style.width = '15rem';
