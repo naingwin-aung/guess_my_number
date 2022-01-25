@@ -2,6 +2,8 @@
 let guess = document.querySelector('.guess');
 let btnCheck = document.querySelector('.btn.check');
 let againBtn = document.querySelector('.btn.again');
+let message = document.querySelector('.message');
+let score = document.querySelector('.score');
 
 let randomNumber = Math.trunc(Math.random() * 20) + 1;
 let labelScore = 20;
@@ -13,23 +15,17 @@ btnCheck.addEventListener('click', function() {
     let guessNumber = Number (guess.value);
 
     if(guessNumber === 0) {
-        document.querySelector('.message').textContent = 'No Number Please Enter Again';
+        message.textContent = 'No Number Please Enter Again';
     } else {
         if(labelScore > 0) {
-            if(guessNumber > randomNumber) {
-                document.querySelector('.message').textContent = "Too high"
+            if(guessNumber != randomNumber) {
+                message.textContent = guessNumber > randomNumber ? "Too high" : "Too low";
                 labelScore--;
-                document.querySelector('.score').textContent = labelScore;
-            }
-        
-            if(guessNumber < randomNumber) {
-                document.querySelector('.message').textContent = 'Too low'
-                labelScore--;
-                document.querySelector('.score').textContent = labelScore;
+                score.textContent = labelScore;
             }
         
             if(guessNumber == randomNumber) {
-                document.querySelector('.message').textContent = 'Equal'
+                message.textContent = 'Equal'
                 if(labelScore > highscore) {
                     highscore = labelScore;
                     document.querySelector('.highscore').textContent = highscore;
@@ -41,7 +37,7 @@ btnCheck.addEventListener('click', function() {
                 btnCheck.disabled = true;
             }
         } else {
-            document.querySelector('.message').textContent = 'Lose The Game';
+            message.textContent = 'Lose The Game';
         }
     }
 
@@ -51,11 +47,11 @@ againBtn.addEventListener('click', function() {
    randomNumber = Math.trunc(Math.random() * 20) + 1;
    console.log(randomNumber);
    labelScore = 20;
-   document.querySelector('.score').textContent = labelScore;
+   score.textContent = labelScore;
    document.querySelector('.number').textContent = '?';
    document.querySelector('body').style.backgroundColor = "black";
    document.querySelector('.number').style.width = '15rem';
    guess.value = '';
-   document.querySelector('.message').textContent = 'Start guessing...'
+   message.textContent = 'Start guessing...'
    btnCheck.disabled = false;
 })
